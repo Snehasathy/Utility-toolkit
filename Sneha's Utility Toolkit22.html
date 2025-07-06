@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)file:///C:/Users/lap/Downloads/Sneha's%20Utility%20Toolkit%20(1).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sneha's Utility Toolkit</title>
+  <link rel="stylesheet" href="./Sneha&#39;s Utility Toolkit22_files/all.min.css">
+  <style>
+    :root {
+      --main-bg: #2f2f2f;
+      --card-bg: #3f3f3f;
+      --text: #ffffff;
+      --accent: #00d1b2;
+    }
+    * {
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #2f2f2f, #3a3a3a);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 30px;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .tool-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+      animation: slideFadeIn 1s ease-in-out;
+    }
+    .tool-card:hover {
+      transform: scale(1.01);
+      box-shadow: 0 0 20px var(--accent);
+    }
+    .tool-card h2 {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tool-card i {
+      color: var(--accent);
+    }
+    .tool-card button {
+      background: var(--accent);
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .tool-card button:hover {
+      transform: scale(1.05);
+      background: #00ffc8;
+    }
+    .tool-section {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #666;
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      background: #555;
+      color: white;
+      border: none;
+      border-radius: 6px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+      color: var(--accent);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideFadeIn {
+      0% { opacity: 0; transform: translateX(-50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Sneha's Utility Toolkit</h1>
+  <div class="tool-grid">
+<!-- Currency Converter -->
+<div class="tool-card" id="currencyCard">
+  <h2><i class="fas fa-dollar-sign"></i> Currency Converter</h2>
+  <button onclick="openTool(&#39;currencyCard&#39;, &#39;currency&#39;)">Click to Enter</button>
+  <div id="currency" class="tool-section" style="display: none;">
+    <input type="number" id="inr" placeholder="Enter INR">
+    <select id="currencySelect">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+      <option value="JPY">JPY</option>
+      <option value="AUD">AUD</option>
+      <option value="CAD">CAD</option>
+      <option value="CNY">CNY</option>
+      <option value="KRW">KRW</option>
+      <option value="ZAR">ZAR</option>
+      <option value="CHF">CHF</option>
+      <option value="SGD">SGD</option>
+      <option value="AED">AED</option>
+    </select>
+    <button onclick="convertCurrency()">Convert</button>
+    <div class="result" id="currencyResult"></div>
+  </div>
+</div>
+
+<!-- GST Calculator -->
+<div class="tool-card" id="gstCard">
+  <h2><i class="fas fa-receipt"></i> GST Calculator</h2>
+  <button onclick="openTool(&#39;gstCard&#39;, &#39;gst&#39;)">Click to Enter</button>
+  <div id="gst" class="tool-section" style="display: none;">
+    <input type="number" id="gstPrice" placeholder="Enter product price">
+    <select id="gstRate">
+      <option value="5">5%</option>
+      <option value="12">12%</option>
+      <option value="18">18%</option>
+      <option value="28">28%</option>
+    </select>
+    <button onclick="calculateGST()">Calculate GST</button>
+    <div class="result" id="gstResult"></div>
+  </div>
+</div>
+
+<!-- Temperature Converter -->
+<div class="tool-card" id="tempCard">
+  <h2><i class="fas fa-temperature-high"></i> Temperature Converter</h2>
+  <button onclick="openTool(&#39;tempCard&#39;, &#39;temp&#39;)">Click to Enter</button>
+  <div id="temp" class="tool-section" style="display: none;">
+    <input type="number" id="tempInput" placeholder="Enter value">
+    <select id="tempFrom">
+      <option value="C">Celsius</option>
+      <option value="F">Fahrenheit</option>
+      <option value="K">Kelvin</option>
+    </select>
+    <select id="tempTo">
+      <option value="C">Celsius</option>
+      <option value="F">Fahrenheit</option>
+      <option value="K">Kelvin</option>
+    </select>
+    <button onclick="convertTemp()">Convert</button>
+    <div class="result" id="tempResult"></div>
+  </div>
+</div>
+
+<!-- Age Calculator -->
+<div class="tool-card" id="ageCard">
+  <h2><i class="fas fa-birthday-cake"></i> Age Calculator</h2>
+  <button onclick="openTool(&#39;ageCard&#39;, &#39;age&#39;)">Click to Enter</button>
+  <div id="age" class="tool-section" style="display: none;">
+    <input type="date" id="dob">
+    <button onclick="calculateAge()">Calculate Age</button>
+    <div class="result" id="ageResult"></div>
+  </div>
+</div>
+
+<!-- Length Converter -->
+<div class="tool-card" id="lengthCard">
+  <h2><i class="fas fa-ruler"></i> Length Converter</h2>
+  <button onclick="openTool(&#39;lengthCard&#39;, &#39;length&#39;)">Click to Enter</button>
+  <div id="length" class="tool-section" style="display: none;">
+    <input type="number" id="lengthValue" placeholder="Enter length">
+    <select id="lengthFrom">
+      <option value="m">Meters</option>
+      <option value="cm">Centimeters</option>
+      <option value="in">Inches</option>
+      <option value="ft">Feet</option>
+      <option value="km">Kilometers</option>
+      <option value="mi">Miles</option>
+    </select>
+    <select id="lengthTo">
+      <option value="m">Meters</option>
+      <option value="cm">Centimeters</option>
+      <option value="in">Inches</option>
+      <option value="ft">Feet</option>
+      <option value="km">Kilometers</option>
+      <option value="mi">Miles</option>
+    </select>
+    <button onclick="convertLength()">Convert</button>
+    <div class="result" id="lengthResult"></div>
+  </div>
+</div>
+
+<!-- Time Zones -->
+<div class="tool-card" id="timezoneCard">
+  <h2><i class="fas fa-clock"></i> Time Zones</h2>
+  <button onclick="openTool(&#39;timezoneCard&#39;, &#39;timezone&#39;)">Click to Enter</button>
+  <div id="timezone" class="tool-section" style="display: block;">
+    <input type="text" id="timezoneSearch" placeholder="Enter country or city">
+    <div class="result" id="timezoneResult">Local time in India (simulated): Sun, 06 Jul 2025 14:04:53 GMT</div>
+  </div>
+</div>
+
+<!-- Calendar -->
+<div class="tool-card" id="calendarCard">
+  <h2><i class="fas fa-calendar-alt"></i> Calendar</h2>
+  <button onclick="openTool(&#39;calendarCard&#39;, &#39;calendar&#39;)">Click to Enter</button>
+  <div id="calendar" class="tool-section" style="display: none;">
+    <select id="calendarMonth">
+      <option value="0">January</option><option value="1">February</option><option value="2">March</option><option value="3">April</option><option value="4">May</option><option value="5">June</option><option value="6">July</option><option value="7">August</option><option value="8">September</option><option value="9">October</option><option value="10">November</option><option value="11">December</option>
+    </select>
+    <input type="number" id="calendarYear" placeholder="Enter year">
+    <button onclick="generateCalendar()">Show Calendar</button>
+    <div class="result" id="calendarResult"></div>
+  </div>
+</div>
+
+<!-- Scientific Calculator -->
+<div class="tool-card" id="sciCalcCard">
+  <h2><i class="fas fa-calculator"></i> Scientific Calculator</h2>
+  <button onclick="openTool(&#39;sciCalcCard&#39;, &#39;sciCalc&#39;)">Click to Enter</button>
+  <div id="sciCalc" class="tool-section" style="display: none;">
+    <input type="text" id="sciInput" placeholder="e.g. 2+2*Math.sin(30)">
+    <button onclick="calculateScientific()">Calculate</button>
+    <div class="result" id="sciResult"></div>
+  </div>
+</div>
+</div> <!-- closes .tool-grid -->
+
+<script>
+  // Show/Hide only selected tool
+  function openTool(cardId, sectionId) {
+    const sections = document.querySelectorAll(".tool-section");
+    sections.forEach(sec => sec.style.display = "none");
+    document.getElementById(sectionId).style.display = "block";
+  }
+
+  // Currency Converter
+  function convertCurrency() {
+    const inr = parseFloat(document.getElementById("inr").value);
+    const currency = document.getElementById("currencySelect").value;
+    const rates = {
+      USD: 0.012, EUR: 0.011, GBP: 0.0095, JPY: 1.7, AUD: 0.018, CAD: 0.016,
+      CNY: 0.088, KRW: 15.5, ZAR: 0.22, CHF: 0.011, SGD: 0.016, AED: 0.044
+    };
+    const result = inr * rates[currency];
+    document.getElementById("currencyResult").innerText = `${inr} INR = ${result.toFixed(2)} ${currency}`;
+  }
+
+  // GST Calculator
+  function calculateGST() {
+    const price = parseFloat(document.getElementById("gstPrice").value);
+    const rate = parseFloat(document.getElementById("gstRate").value);
+    const gst = price * (rate / 100);
+    const total = price + gst;
+    document.getElementById("gstResult").innerText = `GST: ₹${gst.toFixed(2)}, Total: ₹${total.toFixed(2)}`;
+  }
+
+  // Temperature Converter
+  function convertTemp() {
+    const val = parseFloat(document.getElementById("tempInput").value);
+    const from = document.getElementById("tempFrom").value;
+    const to = document.getElementById("tempTo").value;
+    let result;
+
+    if (from === to) result = val;
+    else if (from === "C" && to === "F") result = val * 9/5 + 32;
+    else if (from === "C" && to === "K") result = val + 273.15;
+    else if (from === "F" && to === "C") result = (val - 32) * 5/9;
+    else if (from === "F" && to === "K") result = (val - 32) * 5/9 + 273.15;
+    else if (from === "K" && to === "C") result = val - 273.15;
+    else if (from === "K" && to === "F") result = (val - 273.15) * 9/5 + 32;
+
+    document.getElementById("tempResult").innerText = `${val}°${from} = ${result.toFixed(2)}°${to}`;
+  }
+
+  // Age Calculator
+  function calculateAge() {
+    const dob = new Date(document.getElementById("dob").value);
+    const now = new Date();
+    let diff = now - dob;
+
+    let ms = diff % 1000;
+    diff = Math.floor(diff / 1000);
+    let s = diff % 60;
+    diff = Math.floor(diff / 60);
+    let m = diff % 60;
+    diff = Math.floor(diff / 60);
+    let h = diff % 24;
+    diff = Math.floor(diff / 24);
+
+    let years = Math.floor(diff / 365.25);
+    let daysLeft = diff - Math.floor(years * 365.25);
+    let months = Math.floor(daysLeft / 30.44);
+    let days = Math.floor(daysLeft - months * 30.44);
+
+    document.getElementById("ageResult").innerText =
+      `You are ${years} years, ${months} months, ${days} days, ${h} hours, ${m} minutes, ${s} seconds, ${ms} ms old.`;
+  }
+
+  // Length Converter
+  function convertLength() {
+    const val = parseFloat(document.getElementById("lengthValue").value);
+    const from = document.getElementById("lengthFrom").value;
+    const to = document.getElementById("lengthTo").value;
+    const factors = {
+      m: 1, cm: 100, in: 39.3701, ft: 3.28084, km: 0.001, mi: 0.000621371
+    };
+    const result = val * (factors[to] / factors[from]);
+    document.getElementById("lengthResult").innerText = `${val} ${from} = ${result.toFixed(4)} ${to}`;
+  }
+
+  // Time Zone (mock display, not real-time API)
+  document.getElementById("timezoneSearch").addEventListener("input", () => {
+    const val = document.getElementById("timezoneSearch").value.toLowerCase();
+    const now = new Date();
+    document.getElementById("timezoneResult").innerText =
+      `Local time in ${val.charAt(0).toUpperCase() + val.slice(1)} (simulated): ${now.toUTCString()}`;
+  });
+
+  // Calendar
+  function generateCalendar() {
+    const month = parseInt(document.getElementById("calendarMonth").value);
+    const year = parseInt(document.getElementById("calendarYear").value);
+    const date = new Date(year, month, 1);
+    let result = `<strong>${date.toLocaleString('default', { month: 'long' })} ${year}</strong><br>`;
+    while (date.getMonth() === month) {
+      result += `${date.getDate()} `;
+      date.setDate(date.getDate() + 1);
+    }
+    document.getElementById("calendarResult").innerHTML = result;
+  }
+
+  // Scientific Calculator
+  function calculateScientific() {
+    try {
+      const input = document.getElementById("sciInput").value;
+      const result = eval(input); // Caution: real app should sanitize input
+      document.getElementById("sciResult").innerText = `Result: ${result}`;
+    } catch {
+      document.getElementById("sciResult").innerText = "Invalid expression.";
+    }
+  }
+</script>
+
+
+
+</body></html>
